@@ -1,0 +1,64 @@
+
+/* 1) Increase the app’s default font size */
+html {
+  font-size: 18px !important;  /* adjust this value to taste */
+}
+
+/* closed headers get light grey */
+.accordion-button.collapsed {
+  background-color: #f7f6f3 !important;
+}
+
+/* open headers get white */
+.accordion-button:not(.collapsed) {
+  background-color: #f7f6f3 !important;
+  color: #2f6f8f !important;
+  font-weight: bold !important;
+}
+
+
+.nav-link:hover {
+  color: #2f6f8f !important;
+  font-weight: bold;
+}
+
+
+/* 2) Top-level navbar: only active links get your brand color + bold */
+.navbar .navbar-brand,
+.navbar .nav-link {
+  color: inherit !important;
+  font-weight: normal !important;
+}
+.navbar .nav-link.active {
+  color: #2f6f8f !important;
+  font-weight: bold !important;
+}
+
+
+/* 3) Inner card-underline tabs (Tab A1, Tab B1, etc.): same rules */
+.navs-card-underline .nav-link .nav-link:hover {
+  color: inherit !important;
+  font-weight: normal !important;
+}
+.navs-card-underline .nav-link.active {
+  color: #2f6f8f !important;
+  font-weight: bold !important;
+  border-bottom-color: #2f6f8f !important;
+}
+
+/* border around each panel */
+.accordion .accordion-item {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 0.5rem; /* spacing between panels */
+}
+
+.accordion .accordion-item + .accordion-item {
+  margin-top: 0;
+}
+
+
+
+:root {
+  --font-sans: var(--bs-body-font-family);
+}
