@@ -52,8 +52,8 @@ Plot_theme <- function(
     axis.text.x = element_text(color = "#343A40", family = base_family, size = 15, angle = 0),
     axis.text.y = element_text(color = "#343A40", family = base_family, size = 15, angle = 0),
 
-    axis.title.x = element_text(color = "#343A40", family = heading_family, face = "bold", size = 15, angle = 0),
-    axis.title.y = element_text(color = "#343A40", family = heading_family, face = "bold", size = 15, angle = 90),
+    axis.title.x = element_text(color = "#343A40", family = heading_family, face = "bold", size = 15, angle = 0, margin = margin(t = 3)),
+    axis.title.y = element_text(color = "#343A40", family = heading_family, face = "bold", size = 15, angle = 90, margin = margin(r = 3)),
 
     # Titles
     plot.title = element_text(
@@ -76,7 +76,7 @@ Plot_theme <- function(
 source("SSandP.R")
 
 ui <- page_navbar(
-  title = "Sample Size & Power Visualizer",
+  title = "Intuition Lab",
   theme = bs_theme(version = 5,
                    bg            = "#f7f6f3",   # page background
                    fg            = "#343A40",   # default text/link color
