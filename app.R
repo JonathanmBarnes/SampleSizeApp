@@ -7,7 +7,11 @@ library(pwr)
 
 '
 unlink("docs", recursive = TRUE, force = TRUE)
-shinylive::export(appdir = ".", destdir = "docs")
+shinylive::export(appdir = ".", destdir = "docs",
+  template_params = list(
+    title = "Intuition Lab - Sample Size",
+    include_in_head = ga_head
+  ))
 httpuv::runStaticServer("docs", port = 8000)
 '
 
@@ -17,6 +21,7 @@ if (FALSE) {
   library(tibble)
   #library(tidyverse)
 }
+
 
 
 Plot_theme <- function(
@@ -75,7 +80,26 @@ Plot_theme <- function(
 
 source("SSandP.R")
 
-ui <- page_navbar(
+ui <- tagList(
+  # This is the real HTML <head>
+  tags$head(
+    tags$title("Intuition Lab - Sample Size"),
+    tags$style(HTML("
+      .navbar .jb-logo-item > a {
+      padding-left: 0.1rem !important;
+      padding-right: 0.1rem !important;
+      padding-top: 0.1rem !important;
+      padding-bottom: 0.4rem !important;
+      }
+      .jb-logo {
+        height: 38px;
+        display: block;
+        margin: 0;
+      }
+    ")),
+  ),
+
+  page_navbar(
   title = "Intuition Lab",
   theme = bs_theme(version = 5,
                    bg            = "#f7f6f3",   # page background
@@ -90,10 +114,6 @@ ui <- page_navbar(
                    link_color_hover = "#137288",
                    link_visited     = "#137288",),
 
-
-  tags$head(
-    tags$link(rel = "stylesheet", href = "styles.css")
-  ),
 
   # These two make the app use the viewport more naturally
   fillable = TRUE,
@@ -169,8 +189,22 @@ ui <- page_navbar(
         p("This information or content and conclusions are those of the authors and should not be construed as the official position or policy of, nor should any endorsements be inferred by ASTP, HHS or the U.S. Government.")
       )
     )
-  )
+  ),
+  nav_spacer(),
 
+  nav_item(
+    class = "jb-logo-item",
+    tags$a(
+      href   = "https://jonathanmbarnes.github.io",
+      target = "_blank",
+      tags$img(
+        src   = "HexlogoJB.png",
+        alt   = "Jonathan M. Barnes",
+        class = "jb-logo"
+      )
+    )
+  )
+  )
 )
 
 server <- function(input, output, session) {
